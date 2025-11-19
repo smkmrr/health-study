@@ -1,7 +1,7 @@
 # Health Study Data Analysis
 
 ## Overview
-This project performs a statistical analysis on a health dataset to explore relationships between lifestyle factors (age, weight, smoking status) and health metrics (systolystic blood pressure, cholesterol).
+This project performs a statistical analysis on a health dataset to explore relationships between age, weight, smoking status, systolystic blood pressure, cholesterol.
 
 The analysis is presented in a Jupyter Notebook (`report.ipynb`). To maintain a clean and modular codebase, all data processing, statistical calculations, and visualization logic are separated into Python modules within the `src/` directory.
 
@@ -12,10 +12,10 @@ The repository is organized as follows:
 ├── data/
 │   └── health_study_dataset.csv   # The raw dataset used for analysis
 ├── src/
-│   ├── analysis.py                # Statistical functions (Descriptive stats, T-tests, CI)
+│   ├── analysis.py                # Statistical functions 
 │   ├── io_utils.py                # Data loading and handling
-│   └── viz.py                     # Visualization functions (Histograms, Boxplots)
-├── report.ipynb                   # The main analysis notebook (Presentation layer)
+│   └── viz.py                     # Visualization functions 
+├── report.ipynb                   # The main analysis notebook 
 ├── requirements.txt               # List of Python dependencies
 └── README.md                      # Project documentation
 ```
@@ -27,9 +27,9 @@ The analysis covers the following key statistical areas:
 1.  **Descriptive Analysis**: Calculation of Mean, Median, Min, and Max for key health variables.
 2.  **Data Visualization**:
       * **Histogram**: To analyze the distribution of Systolic Blood Pressure.
-      * **Boxplot**: To compare weight distributions between genders and identify outliers.
-      * **Bar Chart**: To visualize the class imbalance between smokers and non-smokers.
-3.  **Simulation**: A **Monte Carlo simulation** (using `numpy.random` with seed) to validate the observed disease prevalence against a simulated population ($N=1000$).
+      * **Boxplot**: To compare weight distributions between genders.
+      * **Bar Chart**: To visualize the ratio between smokers and non-smokers.
+3.  **Simulation**: Using `numpy.random` with seed to validate the observed disease prevalence against a simulated population ($N=1000$).
 4.  **Confidence Interval**: Calculation of a 95% Confidence Interval for the population mean of systolic blood pressure.
 5.  **Hypothesis Testing**: A **Two-sample T-test** to evaluate the hypothesis: *"Smokers have higher blood pressure than non-smokers."*
 
