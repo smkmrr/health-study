@@ -37,7 +37,7 @@ The analysis covers the following key statistical areas:
 
 ### 1. Prerequisites
 
-Ensure you have Python installed. It is recommended to use a virtual environment.
+Ensure you have Python 3.13.7 installed. It is recommended to use a virtual environment.
 
 ### 2. Install Dependencies
 
