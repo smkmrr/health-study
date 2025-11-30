@@ -69,3 +69,27 @@ def plot_smoker_bar_chart(df):
     plt.ylabel('antal patienter')
 
     plt.show()
+
+
+def plot_age_vs_bp(df):
+   
+    plt.figure(figsize=(10, 6))
+    
+    # 1. Scatter plot of the actual data
+    plt.scatter(df['age'], df['systolic_bp'], alpha=0.5, label='Patients')
+    
+    # 2. Calculate a simple trendline (y = mx + b) using numpy
+    # This is another example of "Linear Algebra in practice"
+    m, b = np.polyfit(df['age'], df['systolic_bp'], 1)
+    
+    # 3. Plot the line
+    plt.plot(df['age'], m*df['age'] + b, color='red', linewidth=2, label=f'Trend (Slope: {m:.2f})')
+    
+    # 4. Labels
+    plt.title('Relationship: Age vs. Systolic Blood Pressure')
+    plt.xlabel('Age (years)')
+    plt.ylabel('Systolic BP (mmHg)')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    plt.show()

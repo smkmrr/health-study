@@ -73,5 +73,30 @@ def test_smoker_blood_pressure(df):
     return t_statistic, p_value
 
 
-
+def calculate_ci_bootstrap(data, confidence_level=0.95, num_simulations=10000):
+    """
+    Calculates the Confidence Interval using the Bootstrap method (Resampling).
+    """
+    # 1. Convert data to numpy array for speed
+    data_array = data.to_numpy()
+    n = len(data_array)
+    
+    # 2. Create a list to hold our 10,000 simulated means
+    simulated_means = []
+    
+    # 3. Run the simulation
+    for _ in range(num_simulations):
+        # Pick n random values from the data, allowing duplicates (replacement)
+        resample = np.random.choice(data_array, size=n, replace=True)
+        
+        # Calculate the mean of this fake sample
+        simulated_means.append(resample.mean())
+        
+    # 4. Find the percentiles for the confidence level
+    # For 95%, we want the 2.5th percentile and the 97.5th percentile
+    alpha = (1 - confidence_level) / 2
+    lower_bound = np.percentile(simulated_means, alpha * 100)
+    upper_bound = np.percentile(simulated_means, (1 - alpha) * 100)
+    
+    return lower_bound, upper_bound
 
