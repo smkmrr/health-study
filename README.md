@@ -1,56 +1,92 @@
-# Health Study Data Analysis
+# Health Data Analysis Study
 
-## Overview
-This project performs a statistical analysis on a health dataset to explore relationships between age, weight, smoking status, systolystic blood pressure, cholesterol.
+This project implements a statistical analysis and machine learning pipeline using a health dataset. It is designed to explore relationships between health metrics (such as age, weight, and smoking habits), cardiovascular health (systolic blood pressure), and gender.
 
-The analysis is presented in a Jupyter Notebook (`report.ipynb`). To maintain a clean and modular codebase, all data processing, statistical calculations, and visualization logic are separated into Python modules within the `src/` directory.
+The project uses **Object-Oriented Programming (OOP)** principles to organize analysis logic and utilizes **Linear Algebra** via `scikit-learn` for predictive modeling.
+
+The primary goal of this analysis is to derive insights from patient data using various statistical methods and machine learning techniques.
+
+---
+
+## Key Analysis Steps:
+
+### 1. Descriptive Analysis:
+- Calculation of summary statistics (Mean, Median, Min, Max) for age, weight, height, blood pressure, and cholesterol.
+- Identification of hypertension prevalence (systolic BP > 140 mmHg).
+
+### 2. Simulation:
+- Monte Carlo-style simulation to compare disease prevalence in the dataset against a simulated population of 1,000 individuals.
+
+### 3. Statistical Inference:
+- **Confidence Intervals:** Calculation of the 95% confidence interval for mean systolic blood pressure using both Normal Approximation and Bootstrap methods.
+- **Hypothesis Testing:** A two-sample t-test to determine if there is a statistically significant difference in blood pressure between smokers and non-smokers.
+- **Power Analysis:** Simulation to determine the statistical power of the hypothesis test.
+
+### 4. Predictive Modeling (Linear Algebra):
+- **Linear Regression:** A model predicting systolic blood pressure based on Age and Weight.
+- **Visualization:** Scatter plot with a regression trendline to visualize correlations.
+
+---
+
+## Visualizations
+
+The notebook generates several visualizations to interpret the data:
+- **Histogram:** Distribution of systolic blood pressure.
+- **Boxplot:** Weight distribution comparisons by gender.
+- **Bar Chart:** Proportion of smokers vs. non-smokers.
+- **Scatter Plot:** Age vs. Blood Pressure with a linear regression trendline.
+
+---
 
 ## Project Structure
-The repository is organized as follows:
 
-```text
+The code is modularized into the `src` directory:
+
+```
+text
+├── report.ipynb                 # Main analysis notebook
+├── requirements.txt             # List of dependencies
 ├── data/
-│   └── health_study_dataset.csv   # The raw dataset used for analysis
-├── src/
-│   ├── analysis.py                # Statistical functions 
-│   ├── io_utils.py                # Data loading and handling
-│   └── viz.py                     # Visualization functions 
-├── report.ipynb                   # The main analysis notebook 
-├── requirements.txt               # List of Python dependencies
-└── README.md                      # Project documentation
+│   └── health_study_dataset.csv # Input dataset
+└── src/                         # Custom source code modules
+    ├── __init__.py
+    ├── io_utils.py              # Data loading functions
+    ├── health_analyzer.py       # OOP class for health analysis (Main logic)
+    └── viz.py                   # Plotting and visualization functions
 ```
+---
+## How to Run
 
-## Features & Methodology
+### Prerequisites
+* Python 3.13+ installed.
+* Git installed.
 
-The analysis covers the following key statistical areas:
+### Installation
 
-1.  **Descriptive Analysis**: Calculation of Mean, Median, Min, and Max for key health variables.
-2.  **Data Visualization**:
-      * **Histogram**: To analyze the distribution of Systolic Blood Pressure.
-      * **Boxplot**: To compare weight distributions between genders.
-      * **Bar Chart**: To visualize the ratio between smokers and non-smokers.
-3.  **Simulation**: Using `numpy.random` with seed to validate the observed disease prevalence against a simulated population ($N=1000$).
-4.  **Confidence Interval**: Calculation of a 95% Confidence Interval for the population mean of systolic blood pressure.
-5.  **Hypothesis Testing**: A **Two-sample T-test** to evaluate the hypothesis: *"Smokers have higher blood pressure than non-smokers."*
+To ensure reproducibility, please use a virtual environment and install the exact dependencies.
 
-## Installation and Usage
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/smkmrr/health-study.git
+    cd health-study
+    ```
 
-### 1. Prerequisites
+2.  **Set up the Virtual Environment:**
+    ```bash
+    # Create the environment
+    python -m venv venv
 
-Ensure you have Python 3.13.7 installed. It is recommended to use a virtual environment.
+    # Activate the environment (Windows Git Bash)
+    source venv/Scripts/activate
+    # (On macOS/Linux: source venv/bin/activate)
+    ```
 
-### 2. Install Dependencies
+3.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Run the following command to install the required libraries:
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Run the Analysis
-
-Open the Jupyter Notebook to view the report and results:
-
-```bash
-jupyter notebook report.ipynb
-```
+### Running the Analysis
+1.  Open the project folder in **VS Code**.
+2.  Open the `report.ipynb` file.
+3.  Click the **"Run All"** button at the top of the notebook to execute the full analysis pipeline.
