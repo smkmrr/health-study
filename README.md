@@ -1,9 +1,32 @@
 # Health Study Data Analysis
 
 ## Overview
-This project performs a statistical analysis on a health dataset to explore relationships between age, weight, smoking status, systolystic blood pressure, cholesterol.
+This project implements a statistical analysis and machine learning pipeline using a health dataset. It is designed to explore relationships between health metrics (such as age, weight, and smoking habits) and cardiovascular health (systolic blood pressure).
 
-The analysis is presented in a Jupyter Notebook (`report.ipynb`). To maintain a clean and modular codebase, all data processing, statistical calculations, and visualization logic are separated into Python modules within the `src/` directory.
+The project uses **Object-Oriented Programming (OOP)** principles to organize analysis logic and utilizes **Linear Algebra** via `scikit-learn` for predictive modeling.
+
+---
+
+## Key Analysis Steps
+
+### 1. Descriptive Analysis
+* Calculation of summary statistics (Mean, Median, Min, Max) for age, weight, height, blood pressure, and cholesterol.
+* Identification of hypertension prevalence.
+
+### 2. Simulation
+* Monte Carlo-style simulation to compare disease prevalence in the dataset against a simulated population of 1,000 individuals.
+
+### 3. Statistical Inference
+* **Confidence Intervals:** Calculation of the 95% confidence interval for mean systolic blood pressure using both Normal Approximation and Bootstrap methods.
+* **Hypothesis Testing:** A two-sample t-test to determine if there is a statistically significant difference in blood pressure between smokers and non-smokers.
+* **Power Analysis:** Simulation to determine the statistical power of the hypothesis test.
+
+### 4. Predictive Modeling (Linear Algebra)
+* **Linear Regression:** A model predicting systolic blood pressure based on Age and Weight.
+* **Visualization:** Scatter plot with a regression trendline to visualize correlations.
+
+---
+
 
 ## Project Structure
 
@@ -22,18 +45,6 @@ The code is modularized into the `src` directory:
     └── viz.py                   # Plotting and visualization functions
 ```
     
-## Features & Methodology
-
-The analysis covers the following key statistical areas:
-
-1.  **Descriptive Analysis**: Calculation of Mean, Median, Min, and Max for key health variables.
-2.  **Data Visualization**:
-      * **Histogram**: To analyze the distribution of Systolic Blood Pressure.
-      * **Boxplot**: To compare weight distributions between genders.
-      * **Bar Chart**: To visualize the ratio between smokers and non-smokers.
-3.  **Simulation**: Using `numpy.random` with seed to validate the observed disease prevalence against a simulated population ($N=1000$).
-4.  **Confidence Interval**: Calculation of a 95% Confidence Interval for the population mean of systolic blood pressure.
-5.  **Hypothesis Testing**: A **Two-sample T-test** to evaluate the hypothesis: *"Smokers have higher blood pressure than non-smokers."*
 
 ## Installation and Usage
 
