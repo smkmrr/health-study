@@ -15,7 +15,7 @@ The primary goal of this analysis is to derive insights from patient data using 
 - Identification of hypertension prevalence (systolic BP > 140 mmHg).
 
 ### 2. Simulation:
-- Monte Carlo-style simulation to compare disease prevalence in the dataset against a simulated population of 1,000 individuals.
+- Monte Carlo-style simulation to compare disease prevalence in the dataset against a simulated population of 1000 individuals.
 
 ### 3. Statistical Inference:
 - **Confidence Intervals:** Calculation of the 95% confidence interval for mean systolic blood pressure using both Normal Approximation and Bootstrap methods.
@@ -42,18 +42,18 @@ The notebook generates several visualizations to interpret the data:
 
 The code is modularized into the `src` directory:
 
-```
-text
+
 ├── report.ipynb                 # Main analysis notebook
 ├── requirements.txt             # List of dependencies
+├── .gitignore                   # Specifies files to ignore in Git
 ├── data/
 │   └── health_study_dataset.csv # Input dataset
 └── src/                         # Custom source code modules
-    ├── __init__.py
+    ├── analysis.py              # Functional statistical calculations (Part 1 logic)
+    ├── health_analyzer.py       # OOP class for health analysis (Part 2 logic)
     ├── io_utils.py              # Data loading functions
-    ├── health_analyzer.py       # OOP class for health analysis (Main logic)
     └── viz.py                   # Plotting and visualization functions
-```
+
 ---
 ## How to Run
 
@@ -78,7 +78,6 @@ To ensure reproducibility, please use a virtual environment and install the exac
 
     # Activate the environment (Windows Git Bash)
     source venv/Scripts/activate
-    # (On macOS/Linux: source venv/bin/activate)
     ```
 
 3.  **Install Dependencies:**
