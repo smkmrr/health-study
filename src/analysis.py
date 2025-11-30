@@ -3,7 +3,11 @@ import numpy as np
 from scipy.stats import ttest_ind
 
 
-def get_descriptive_stats (df):                                                                 
+def get_descriptive_stats (df):              
+
+    """
+    Calculates descriptive statistics (mean, median, min, max) for selected columns.
+    """                                                   
 
     
     columns_to_analyze = ['age', 'weight', 'height', 'systolic_bp', 'cholesterol']                    
@@ -22,6 +26,10 @@ def get_descriptive_stats (df):
 
 
 def run_disease_simulation(df, num_simulations=1000):   
+
+    """
+    Calculates the probability of having the disease using a 1000 simulation.
+    """
    
     
     real_probability = df['disease'].mean()
@@ -37,7 +45,11 @@ def run_disease_simulation(df, num_simulations=1000):
     return real_probability, simulated_probability
 
 
-def calculate_confidence_interval(df, confidence_level=0.95):   #
+def calculate_confidence_interval(df, confidence_level=0.95):   
+
+    """
+    Calculates 95% cinfidence interval for systolisc blood pressure.
+    """
     
    
     mean = df['systolic_bp'].mean()
@@ -61,6 +73,10 @@ def calculate_confidence_interval(df, confidence_level=0.95):   #
 
 def test_smoker_blood_pressure(df):
 
+    """
+    compare blood pressure between smokers and non-smokers.
+    """
+
 
     smokers_bp = df[df['smoker'] == 'Yes']['systolic_bp']
 
@@ -74,29 +90,35 @@ def test_smoker_blood_pressure(df):
 
 
 def calculate_ci_bootstrap(data, confidence_level=0.95, num_simulations=10000):
+
     """
-    Calculates the Confidence Interval using the Bootstrap method (Resampling).
+    calculates the confidence interval using the Bootstrap method.
     """
-    # 1. Convert data to numpy array for speed
+
+
+    
     data_array = data.to_numpy()
     n = len(data_array)
+
+
     
-    # 2. Create a list to hold our 10,000 simulated means
+    
     simulated_means = []
     
-    # 3. Run the simulation
+    
     for _ in range(num_simulations):
-        # Pick n random values from the data, allowing duplicates (replacement)
+        
         resample = np.random.choice(data_array, size=n, replace=True)
         
-        # Calculate the mean of this fake sample
+        
         simulated_means.append(resample.mean())
         
-    # 4. Find the percentiles for the confidence level
-    # For 95%, we want the 2.5th percentile and the 97.5th percentile
+    
     alpha = (1 - confidence_level) / 2
     lower_bound = np.percentile(simulated_means, alpha * 100)
     upper_bound = np.percentile(simulated_means, (1 - alpha) * 100)
+    
+
     
     return lower_bound, upper_bound
 
